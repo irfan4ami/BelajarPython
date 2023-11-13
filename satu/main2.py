@@ -1,16 +1,16 @@
-nama_file_input = input("Input Data: ")
-nama_file_output = input("Output Data: ")
+data_in = input("Input Data: ")
+data_out = input("Output Data: ")
 try:
-    with open(nama_file_input, 'r') as file_input:
+    with open(data_in, 'r') as file_input:
         isi_file = file_input.read()
         isi_file_modifikasi = isi_file.replace(';', ':')
-        with open(nama_file_output, 'w') as file_output:
+        with open(data_out, 'w') as file_output:
             file_output.write(isi_file_modifikasi)
 
-        print("Penggantian karakter ; ke : berhasil. Hasil disimpan di '{}'.".format(nama_file_output))
+        print(f"Penggantian karakter ; ke : berhasil. Hasil disimpan di {data_out}")
 
 except FileNotFoundError:
-    print("File '{}' tidak ditemukan.".format(nama_file_input))
+    print(f"File '{data_in}' tidak ditemukan.")
 
 except Exception as e:
-    print("Terjadi kesalahan: {}".format(str(e)))
+    print(f"Terjadi kesalahan: {(str(e))}")
