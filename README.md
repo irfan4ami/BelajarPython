@@ -7,3 +7,6 @@ untuk melakukan request curl
 Untuk memahami alur logika dari aritmatika
 ## 4 if else
 digunakan jika ada alur pemilihan
+## 5 split
+digunakan untuk melakukan splitting 
+jika di php adalah explode
