@@ -10,4 +10,5 @@ digunakan jika ada alur pemilihan
 ## 5 split
 digunakan untuk melakukan splitting 
 jika di php adalah explode
-## 6
+## 6 function acces
+belajar untuk memanggil function dari file lain
