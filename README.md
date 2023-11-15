@@ -12,3 +12,5 @@ digunakan untuk melakukan splitting
 jika di php adalah explode
 ## 6 function acces
 belajar untuk memanggil function dari file lain
+## 7 file handling
+belajar untuk melakukan open/save/remove file
