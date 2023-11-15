@@ -1,4 +1,4 @@
-]# Di Buat Untuk Belajar
+# Di Buat Untuk Belajar
 ## 1 replace
 untuk melakukan replace data dari file
 ## 2 curl
