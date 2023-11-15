@@ -1,8 +1,8 @@
 import requests
 import json
  
-url = "https://irfan.iproute.my.id/asu.php" #req 200
-url = "https://gitburn.my.id/asjsh"         #req != 200
+url = "https://gitburn.my.id"               #req 200
+#url = "https://gitburn.my.id/asjsh"         #req != 200
 response = requests.get(url)
 
 if response.status_code == 200:
