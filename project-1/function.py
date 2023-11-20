@@ -1,8 +1,8 @@
-import requests
 import uuid
 import json
 import sys
 import os
+import requests
 
 def color(color="default", text=""):
     array_color = {
@@ -211,48 +211,51 @@ def check():
     files = input(color('green', "Input File : "))
     if cek_file(files) != True:
             print(color('red', "File Not Found"))
-            sys.exit(1)
+            check()
     if cek_file(files) == True:
         with open(files, 'r') as file:
                 lines = file.readlines()
                 data_list = [line.strip() for line in lines]
+                no = 1
         for i, data in enumerate(data_list):
-                print(f'[{i}] {data}')
-    
+                print(f'[{no}] {data}')
+                no += 1
+                
     start = input(color('green', "\nStart : "))
     end = input(color('green', "End   : "))
     print(color('green', "=" * 64))
     result = retrieve_text(files, int(start), int(end))
     list_akun = result.strip().split('\n')
 
-    akun = 0
+    akun = 1
     for data_akun in list_akun:
-        if not data_akun:
-            continue
+            if not data_akun:
+                continue
     
-    file_akun = get_file_token(f"token/{data_akun.split(':')[0]}.txt")
-    pecah = file_akun[0].split(':')
-    nomor = pecah[0].strip()
-    device_id = pecah[1].strip()
-    token = pecah[2].strip()
-    cek = cek_akun(nomor, device_id, token) ### CEK AKUN
-    js_cek = json.loads(cek)
-    success = js_cek["status"]["success"]
-    if success == "true":
+            file_akun = get_file_token(f"token/{data_akun.split(':')[0]}.txt")
+            pecah = file_akun[0].split(':')
+            nomor = pecah[0].strip()
+            device_id = pecah[1].strip()
+            token = pecah[2].strip()
+            cek = cek_akun(nomor, device_id, token) ### CEK AKUN
+            js_cek = json.loads(cek)
+            success = js_cek["status"]["success"]
+            if success == "true":
 #            print(color('purple', f"\n\n{cek} cek_akun "))
 #            sys.exit(1)
-            firstname = js_cek["customers"]["customer"][0]["firstname"]
-            lastname = js_cek["customers"]["customer"][0]["lastname"]
-            mobile = js_cek["customers"]["customer"][0]["mobile"]
-            points = js_cek["customers"]["customer"][0]["loyalty_points"]
-            dibuat = js_cek["customers"]["customer"][0]["registered_on"]
-
-            print(color('green', f"NAMA   : ") + color('nevy', f"{firstname} {lastname}"))
-            print(color('green', f"NOMOR  : ") + color('nevy', f"{mobile}"))
-            print(color('green', f"POINTS : ") + color('nevy', f"{points}"))
-            print(color('green', f"DIBUAT : ") + color('nevy', f"{dibuat}"))
-            print(color('green', "=" * 64))
-
+                firstname = js_cek["customers"]["customer"][0]["firstname"]
+                lastname = js_cek["customers"]["customer"][0]["lastname"]
+                mobile = js_cek["customers"]["customer"][0]["mobile"]
+                points = js_cek["customers"]["customer"][0]["loyalty_points"]
+                dibuat = js_cek["customers"]["customer"][0]["registered_on"]
+                
+                print(color('yellow', f"AKUN KE: ") + color('yellow', f"{akun}"))
+                print(color('green', f"NAMA   : ") + color('nevy', f"{firstname} {lastname}"))
+                print(color('green', f"NOMOR  : ") + color('nevy', f"{mobile}"))
+                print(color('green', f"POINTS : ") + color('nevy', f"{points}"))
+                print(color('green', f"DIBUAT : ") + color('nevy', f"{dibuat}"))
+                print(color('green', "=" * 64))
+                akun += 1
 
 def gen_uuid2():
     return str(uuid.uuid4())
